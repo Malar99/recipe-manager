@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${recipe.name}"></title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1 th:text="${recipe.name}"></h1>
+        <a th:href="@{/recipes}">Back to All Recipes</a>
+    </header>
+
+    <div class="recipe-details">
+        <img th:src="${recipe.imageUrl}" alt="Recipe Image">
+        <h3>Ingredients</h3>
+        <p th:text="${recipe.ingredients}"></p>
+        <h3>Instructions</h3>
+        <p th:text="${recipe.instructions}"></p>
+        <a th:href="@{/recipes/delete/{id}(id=${recipe.id})}" class="delete-btn">Delete Recipe</a>
+    </div>
+</body>
+</html>

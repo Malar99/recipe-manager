@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Manager</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Recipe Manager</h1>
+        <form th:action="@{/recipes/search}" method="get">
+            <input type="text" name="keyword" placeholder="Search recipes...">
+            <button type="submit">Search</button>
+        </form>
+        <a th:href="@{/recipes/add}">Add New Recipe</a>
+    </header>
+
+    <div class="recipe-grid">
+        <div class="recipe-card" th:each="recipe : ${recipes}">
+            <img th:src="${recipe.imageUrl}" alt="Recipe Image">
+            <h3 th:text="${recipe.name}"></h3>
+            <a th:href="@{/recipes/{id}(id=${recipe.id})}">View Recipe</a>
+        </div>
+    </div>
+</body>
+</html>
